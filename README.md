@@ -1,6 +1,7 @@
 # Adoptme
 
 BackEnd de un sistema para adoptar mascotas. Actualizado para la entrega final
+
 - [Enlace para Docker Hub](https://hub.docker.com/repository/docker/wernerk01/app-adoptme-main/general)
 
 ---
@@ -26,3 +27,6 @@ Cada uno de ellos, tienen sus respectivos routes.
 4. Dentro del router mocks.router.js, utilizar este módulo en un endpoint GET llamado “/mockingusers”, y generar 50 usuarios con el mismo formato que entregaría una petición de Mongo.
 5. Dentro del router mocks.router.js, desarrollar un endpoint POST llamado /generateData que reciba los parámetros numéricos “users” y “pets” para generar e insertar en la base de datos la cantidad de registros indicados.
 6. Comprobar dichos registros insertados mediante los servicios GET de users y pets (ya viene por defecto en el Adoptme)
+7. Desarrollar los tests funcionales para todos los endpoints del router “adoption.router.js”.
+8. Desarrollar el Dockerfile para generar una imagen del proyecto.
+9. Subir la imagen de Docker a Dockerhub y añadir en un ReadMe.md al proyecto que contenga el link de dicha imagen.
