@@ -1,0 +1,167 @@
+paths:
+  /api/users:
+    get:
+      summary: "Obtiene la lista de los usuarios"
+      tags:
+        - Users
+      responses:
+        "200":
+          description: La operación fue exitosa, se retorna un arreglo de los usuarios.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+  /api/users/{uid}:
+    get:
+      summary: Obtener usuario por ID
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    $ref: "#/components/schemas/User"
+        "404":
+          description: Usuario no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  error:
+                    type: string
+                    example: User not found
+    put:
+      summary: Actualizar usuario por ID
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserInput"
+      responses:
+        "200":
+          description: Usuario actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    $ref: "#/components/schemas/User"
+        "404":
+          description: Usuario no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  error:
+                    type: string
+                    example: User not found
+    delete:
+      summary: Eliminar usuario por ID
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Usuario eliminado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: User deleted successfully
+        "404":
+          description: Usuario no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  error:
+                    type: string
+                    example: User not found
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: La PK del usuario auto-generada por mongoDB
+          example: "657872b1244ab4694ca2e659"
+        first_name:
+          type: string
+          description: nombre del usuario
+          example: "Pepe"
+        last_name:
+          type: string
+          description: apellido del usuario
+          example: "Lopez"
+        email:
+          type: string
+          description: email del usuario
+          example: "pepe@gmail.com"
+        password:
+          type: string
+          description: contraseña encriptada del usuario
+          example: "$2398498$23749029409"
+        role:
+          type: string
+          description: rol del usuario
+          example: "admin"
+        pets:
+          type: array
+          description: Lista de mascotas
+          items:
+            type: string
+          example: ["gato"]
