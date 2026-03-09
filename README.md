@@ -6,6 +6,33 @@ BackEnd de un sistema para adoptar mascotas. Actualizado para la entrega final
 
 ---
 
+## Instalación
+
+### Opción 1: Instalación local
+
+1. Asegúrate de tener Node.js instalado (versión 16 o superior).
+2. Clona o descarga este repositorio.
+3. Navega al directorio del proyecto.
+4. Instala las dependencias: `npm install`
+5. Crea un archivo `.env` en la raíz del proyecto con las variables de entorno necesarias:
+   ```
+   MONGO_URL=mongodb://localhost:27017/adoptme
+   PORT=3000
+   ```
+   (Ajusta MONGO_URL según tu configuración de MongoDB)
+6. Para desarrollo: `npm run dev`
+   Para producción: `npm start`
+7. La aplicación estará disponible en `http://localhost:3000`
+8. Documentación API en `http://localhost:3000/api-docs`
+9. Para ejecutar los tests: `npm run test`
+
+### Opción 2: Usando Docker
+
+1. Asegúrate de tener Docker instalado.
+2. Descarga la imagen desde Docker Hub: `docker pull wernerk01/app-adoptme-main`
+3. Ejecuta el contenedor: `docker run -p 3000:3000 -e MONGO_URL=mongodb://tu-mongo-url wernerk01/app-adoptme-main`
+4. La aplicación estará disponible en `http://localhost:3000`
+
 ## Contenido actual:
 
 1. Para revisar las mascotas actuales: `http://localhost:<PORT>/api/pets`.
