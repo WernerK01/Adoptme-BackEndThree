@@ -50,3 +50,5 @@ app.use('/api/sessions', sessionsRouter);
 app.use('/api/mocks', mockingRouter);
 
 app.listen(PORT, () => console.log(`Listening on http://localhost:3000\nAPI documentation available at http://localhost:3000/api-docs`));
+
+export default app;
